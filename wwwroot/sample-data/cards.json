@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Island",
+    "expansion": "Fifth Edition",
+    "description": "Tap to add one blue mana to your mana pool.",
+    "colorText": "",
+    "black": 0,
+    "blue": 0,
+    "colorless": 0,
+    "green": 0,
+    "red": 0,
+    "white": 0
+  },
+  {
+    "title": "Mountain",
+    "expansion": "Fifth Edition",
+    "description": "Tap to add one red mana to your mana pool.",
+    "colorText": "",
+    "black": 0,
+    "blue": 0,
+    "colorless": 0,
+    "green": 0,
+    "red": 0,
+    "white": 0
+  },
+  {
+    "title": "Swamp",
+    "expansion": "Fifth Edition",
+    "description": "Tap to add one black mana to your mana pool.",
+    "colorText": "",
+    "black": 0,
+    "blue": 0,
+    "colorless": 0,
+    "green": 0,
+    "red": 0,
+    "white": 0
+  },
+  {
+    "title": "Forest",
+    "expansion": "Fifth Edition",
+    "description": "Tap to add one green mana to your mana pool.",
+    "colorText": "",
+    "black": 0,
+    "blue": 0,
+    "colorless": 0,
+    "green": 0,
+    "red": 0,
+    "white": 0
+  },
+  {
+    "title": "Plains",
+    "expansion": "Fifth Edition",
+    "description": "Tap to add one white mana to your mana pool.",
+    "colorText": "",
+    "black": 0,
+    "blue": 0,
+    "colorless": 0,
+    "green": 0,
+    "red": 0,
+    "white": 0
+  }
+]
