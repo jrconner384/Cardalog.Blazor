@@ -1,4 +1,5 @@
 @page "/cards"
+@using Cardalog.Models
 @inject HttpClient Http
 
 <h1>Card catalog</h1>
@@ -13,15 +14,19 @@ else
     <thead>
       <tr>
         <th>Title</th>
+        <th>Type</th>
+        <th>Subtype</th>
+        <th>Rarity</th>
+        <th>Cost</th>
+        <th>Converted Cost</th>
+        <th>Text</th>
+        <th>Flavor Text</th>
+        <th>Power</th>
+        <th>Toughness</th>
         <th>Expansion</th>
-        <th>Description</th>
-        <th>Color text</th>
-        <th>Cost black</th>
-        <th>Cost blue</th>
-        <th>Cost colorless</th>
-        <th>Cost green</th>
-        <th>Cost red</th>
-        <th>Cost white</th>
+        <th>Card Number</th>
+        <th>Artist</th>
+        <th>Copyright</th>
       </tr>
     </thead>
     <tbody>
@@ -29,15 +34,19 @@ else
       {
         <tr>
           <td>@card.Title</td>
+          <td>@card.Type</td>
+          <td>@card.Subtype</td>
+          <td>@card.Rarity</td>
+          <td>@card.Cost</td>
+          <td>@card.ConvertedCost</td>
+          <td>@card.Text</td>
+          <td>@card.FlavorText</td>
+          <td>@card.Power</td>
+          <td>@card.Toughness</td>
           <td>@card.Expansion</td>
-          <td>@card.Description</td>
-          <td>@card.ColorText</td>
-          <td>@card.CostBlack</td>
-          <td>@card.CostBlue</td>
-          <td>@card.CostColorless</td>
-          <td>@card.CostGreen</td>
-          <td>@card.CostRed</td>
-          <td>@card.CostWhite</td>
+          <td>@card.CardNumber</td>
+          <td>@card.Artist</td>
+          <td>@card.Copyright</td>
         </tr>
       }
     </tbody>
@@ -49,6 +58,6 @@ else
 
   protected override async Task OnInitializedAsync()
   {
-    cards = await Http.GetJsonAsync<Card[]>("sample-data/cards.json");
+    cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
   }
 }

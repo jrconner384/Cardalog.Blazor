@@ -1,13 +1,28 @@
-public class Card
+namespace Cardalog.Models
 {
-  public string Title { get; set; }
-  public string Expansion { get; set; }
-  public string Description { get; set; }
-  public string ColorText { get; set; }
-  public int CostBlack { get; set; }
-  public int CostBlue { get; set; }
-  public int CostColorless { get; set; }
-  public int CostGreen { get; set; }
-  public int CostRed { get; set; }
-  public int CostWhite { get; set; }
+  public class Card
+  {
+    public string Title { get; set; }
+    public string Type { get; set; }
+    public string Subtype { get; set; }
+    public string Rarity { get; set; }
+    public string Cost { get; set; }
+    public int? ConvertedCost { get; set; }
+    public string Text { get; set; }
+    public string FlavorText { get; set; }
+    public int? Power { get; set; }
+    public int? Toughness { get; set; }
+    public Expansion Expansion { get; set; }
+    public int? CardNumber { get; set; }
+    public string Artist { get; set; }
+    public string Copyright { get; set; }
+  }
+
+  public class Expansion
+  {
+    public string Name { get; set; }
+    public int? TotalCards { get; set; }
+    public string Abbreviation { get; set; }
+    public string Copyright { get; set; }
+  }
 }
