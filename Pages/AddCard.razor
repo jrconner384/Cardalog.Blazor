@@ -1,11 +1,8 @@
-@page "/cards"
+@page "/cards/add"
 @using Cardalog.Models
 @inject HttpClient Http
 
-<h1>Card catalog</h1>
-
-<h2>New card</h2>
-
+<h1>Create a card</h1>
 @if (card != null)
 {
   <EditForm Model="@card" OnValidSubmit="@HandleValidSubmit">
@@ -60,7 +57,7 @@
       <label for="Artist">Artist: </label>
       <InputText id="Artist" @bind-Value="card.Artist" />
     </p>
-    <h3>Expansion</h3>
+    <h2>Expansion</h2>
     <p>
       <label for=ExpansionName>Name: </label>
       <InputText id="ExpansionName" @bind-Value="card.Expansion.Name" />
@@ -82,61 +79,11 @@
   </EditForm>
 }
 
-<h2>Cards</h2>
-@if (cards == null)
-{
-  <p><em>Loading...</em></p>
-}
-else
-{
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Subtype</th>
-        <th>Rarity</th>
-        <th>Cost</th>
-        <th>Converted Cost</th>
-        <th>Text</th>
-        <th>Flavor Text</th>
-        <th>Power</th>
-        <th>Toughness</th>
-        <th>Expansion</th>
-        <th>Card Number</th>
-        <th>Artist</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (var card in cards)
-      {
-        <tr>
-          <td>@card.Title</td>
-          <td>@card.Type</td>
-          <td>@card.Subtype</td>
-          <td>@card.Rarity</td>
-          <td>@card.Cost</td>
-          <td>@card.ConvertedCost</td>
-          <td>@card.Text</td>
-          <td>@card.FlavorText</td>
-          <td>@card.Power</td>
-          <td>@card.Toughness</td>
-          <td>@card.Expansion</td>
-          <td>@card.CardNumber</td>
-          <td>@card.Artist</td>
-        </tr>
-      }
-    </tbody>
-  </table>
-}
-
 @code {
-  private Card[] cards;
   private Card card;
 
   protected override async Task OnInitializedAsync()
   {
-    cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
     card = new Card
     {
       Expansion = new Expansion()
