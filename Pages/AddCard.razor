@@ -9,64 +9,82 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div class="form-row">
-      <div class="form-col">
-        <InputText id="Title" @bind-Value="card.Title" placeholder="Title" />
+    <div class="form-group form-row">
+      <div class="col-md-6">
+        <label for="Title">Title</label>
+        <InputText id="Title" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="Type" @bind-Value="card.Type" placeholder="Type" />
+      <div class="col">
+        <label for="Type">Type</label>
+        <InputText id="Type" @bind-Value="card.Type" placeholder="Artifact Creature" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="Subtype" @bind-Value="card.Subtype" placeholder="Subtype" />
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-col">
-        <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Rarity" />
-      </div>
-      <div class="form-col">
-        <InputText id="Cost" @bind-Value="card.Cost" placeholder="Cost" />
-      </div>
-      <div class="form-col">
-        <InputNumber id="ConvertedCost" @bind-Value="card.ConvertedCost" placeholder="Converted Cost" />
+      <div class="col">
+        <label for="Subtype">Subtype</label>
+        <InputText id="Subtype" @bind-Value="card.Subtype" placeholder="Golem" class="form-control" />
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-col">
-        <InputText id="Text" @bind-Value="card.Text" placeholder="Text" />
+    <div class="form-group form-row">
+      <div class="col-md-6">
+        <label for="Rarity">Rarity</label>
+        <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="FlavorText" @bind-Value="card.FlavorText" placeholder="Flavor Text" />
+      <div class="col">
+        <label for="Cost">Cost</label>
+        <InputText id="Cost" @bind-Value="card.Cost" placeholder="3c" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputNumber id="Power" @bind-Value="card.Power" placeholder="Power" />
+      <div class="col">
+        <label for="ConvertedCost">Converted</label>
+        <InputNumber id="ConvertedCost" @bind-Value="card.ConvertedCost" placeholder="3" class="form-control" />
       </div>
     </div>
-    <div class="form-row">
-      <div class="form-col">
-        <InputNumber id="Toughness" @bind-Value="card.Toughness" placeholder="Toughness" />
+    <div class="form-group form-row">
+      <div class="col">
+        <label for="Text">Text</label>
+        <InputTextArea id="Text" @bind-Value="card.Text" placeholder="Defender. Custodian of the Trove enters the battlefield tapped." class="form-control" />
       </div>
-      <div class="form-col">
-        <InputNumber id="CardNumber" @bind-Value="card.CardNumber" placeholder="Card Number" />
+      <div class="col">
+        <label for="FlavorText">Flavor Text</label>
+        <InputTextArea id="FlavorText" @bind-Value="card.FlavorText" placeholder="Silumgar delights in repurposing the treasures of other clans to serve his own ravenous greed." class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="Artist" @bind-Value="card.Artist" placeholder="Artist" />
+    </div>
+    <div class="form-group form-row">
+      <div class="col-md-2">
+        <label for="Power">Power</label>
+        <InputNumber id="Power" @bind-Value="card.Power" placeholder="2" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <label for="Toughness">Toughness</label>
+        <InputNumber id="Toughness" @bind-Value="card.Toughness" placeholder="5" class="form-control" />
+      </div>
+      <div class="col-md-2">
+        <label for="CardNumber">Number</label>
+        <InputNumber id="CardNumber" @bind-Value="card.CardNumber" placeholder="236" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="Artist">Artist</label>
+        <InputText id="Artist" @bind-Value="card.Artist" placeholder="Raoul Vitale" class="form-control" />
       </div>
     </div>
 
     <h2>Expansion</h2>
-    <div class="form-row">
-      <div class="form-col">
-        <InputText id="ExpansionName" @bind-Value="card.Expansion.Name" placeholder="Name" />
+    <div class="form-group form-row">
+      <div class="col">
+        <label for="ExpansionName">Name</label>
+        <InputText id="ExpansionName" @bind-Value="card.Expansion.Name" placeholder="Dragons of Tarkir" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputNumber id="ExpansionCards" @bind-Value="card.Expansion.TotalCards" placeholder="Card Count" />
+      <div class="col-md-2">
+        <label for="ExpansionAbbreviation">Abbreviation</label>
+        <InputText id="ExpansionAbbreviation" @bind-Value="card.Expansion.Abbreviation" placeholder="DTK" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="ExpansionAbbreviation" @bind-Value="card.Expansion.Abbreviation" placeholder="Abbreviation" />
+    </div>
+    <div class="form-group form-row">
+      <div class="col">
+        <label for="ExpansionCopyright">Copyright</label>
+        <InputText id="ExpansionCopyright" @bind-Value="card.Expansion.Copyright" placeholder="2015" class="form-control" />
       </div>
-      <div class="form-col">
-        <InputText id="ExpansionCopyright" @bind-Value="card.Expansion.Copyright" placeholder="Copyright" />
+      <div class="col-md-2">
+        <label for="ExpansionCards">Count</label>
+        <InputNumber id="ExpansionCards" @bind-Value="card.Expansion.TotalCards" placeholder="264" class="form-control" />
       </div>
     </div>
 
