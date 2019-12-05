@@ -3,51 +3,53 @@
 @inject HttpClient Http
 
 <h1>All cards</h1>
+
+<hr />
+
 @if (cards == null)
 {
   <p><em>Loading...</em></p>
 }
 else
 {
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Type</th>
-        <th>Subtype</th>
-        <th>Rarity</th>
-        <th>Cost</th>
-        <!-- <th>Converted Cost</th> -->
-        <th>Text</th>
-        <th>Flavor Text</th>
-        <th>Power</th>
-        <th>Toughness</th>
-        <th>Expansion</th>
-        <th>Card Number</th>
-        <th>Artist</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach (var card in cards)
-      {
-        <tr>
-          <td>@card.Title</td>
-          <td>@card.Type</td>
-          <td>@card.Subtype</td>
-          <td>@card.Rarity</td>
-          <td>@card.Cost</td>
-          <!-- <td>@card.ConvertedCost</td> -->
-          <td>@card.Text</td>
-          <td>@card.FlavorText</td>
-          <td>@card.Power</td>
-          <td>@card.Toughness</td>
-          <td>@card.Expansion</td>
-          <td>@card.CardNumber</td>
-          <td>@card.Artist</td>
-        </tr>
-      }
-    </tbody>
-  </table>
+  @foreach (var card in cards)
+  {
+    <div class="row card">
+      <div class="col-sm-12">
+        <div class="row title">
+          <div class="col-sm-6 title">@card.Title</div>
+          <div class="col-sm-1 cost">@card.Cost.Black |</div>
+          <div class="col-sm-1 cost">@card.Cost.Blue |</div>
+          <div class="col-sm-1 cost">@card.Cost.Colorless |</div>
+          <div class="col-sm-1 cost">@card.Cost.Green |</div>
+          <div class="col-sm-1 cost">@card.Cost.Red |</div>
+          <div class="col-sm-1 cost">@card.Cost.White</div>
+        </div>
+        <hr />
+        <div class="row type">
+          <div class="col-sm-2">@card.Type</div>
+          <div class="col-sm-2">- @card.Subtype</div>
+          <div class="col-sm-2 spacer"></div>
+          <div class="col-sm-3">@card.Expansion.Name</div>
+          <div class="col-sm-3">(@card.Rarity)</div>
+        </div>
+        <hr />
+        <div class="row text">
+          <div class="col-md-6">@card.Text</div>
+        </div>
+        <div class="row spacer"></div>
+        <div class="row ftext">
+          <div class="col-md-6">@card.FlavorText</div>
+        </div>
+        <hr />
+        <div class="row pt">
+          <div class="col-sm-10 spacer"></div>
+          <div class="col-sm-1 oi oi-heart">@card.Power</div>
+          <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
+        </div>
+      </div>
+    </div>
+  }
 }
 
 @code {

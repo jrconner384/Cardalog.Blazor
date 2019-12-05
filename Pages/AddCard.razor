@@ -23,7 +23,12 @@
         <label for="Subtype">Subtype</label>
         <InputText id="Subtype" @bind-Value="card.Subtype" placeholder="Golem" class="form-control" />
       </div>
+      <div class="col">
+        <label for="Condition">Condition</label>
+        <InputText id="Condition" @bind-Value="card.Condition" placeholder="" class="form-control" />
+      </div>
     </div>
+
     <div class="form-group form-row">
       <div class="col-md-4">
         <label for="Rarity">Rarity</label>
@@ -58,6 +63,7 @@
         <InputNumber id="Converted" @bind-Value="card.Cost.Converted" placeholder="3" class="form-control" readonly />
       </div>
     </div>
+
     <div class="form-group form-row">
       <div class="col">
         <label for="Text">Text</label>
@@ -68,6 +74,7 @@
         <InputTextArea id="FlavorText" @bind-Value="card.FlavorText" placeholder="Silumgar delights in repurposing the treasures of other clans to serve his own ravenous greed." class="form-control" />
       </div>
     </div>
+
     <div class="form-group form-row">
       <div class="col-md-2">
         <label for="Power">Power</label>
