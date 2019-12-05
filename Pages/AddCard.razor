@@ -1,11 +1,12 @@
 @page "/cards/add"
 @using Cardalog.Models
 @inject HttpClient Http
+@inject IJSRuntime JSRuntime
 
 <h1>Create a card</h1>
 @if (card != null)
 {
-  <EditForm Model="@card" OnValidSubmit="@HandleValidSubmit">
+  <EditForm Model="@card" OnValidSubmit="@HandleValidSubmit" id="CardInput">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -24,17 +25,37 @@
       </div>
     </div>
     <div class="form-group form-row">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <label for="Rarity">Rarity</label>
         <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control" />
       </div>
       <div class="col">
-        <label for="Cost">Cost</label>
-        <InputText id="Cost" @bind-Value="card.Cost" placeholder="3c" class="form-control" />
+        <label for="Black">Black</label>
+        <InputNumber id="Black" @bind-Value="card.Cost.Black" placeholder="0" class="form-control" />
       </div>
       <div class="col">
-        <label for="ConvertedCost">Converted</label>
-        <InputNumber id="ConvertedCost" @bind-Value="card.ConvertedCost" placeholder="3" class="form-control" />
+        <label for="Blue">Blue</label>
+        <InputNumber id="Blue" @bind-Value="card.Cost.Blue" placeholder="0" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="Colorless">Colorless</label>
+        <InputNumber id="Colorless" @bind-Value="card.Cost.Colorless" placeholder="3" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="Green">Green</label>
+        <InputNumber id="Green" @bind-Value="card.Cost.Green" placeholder="0" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="Red">Red</label>
+        <InputNumber id="Red" @bind-Value="card.Cost.Red" placeholder="0" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="White">White</label>
+        <InputNumber id="White" @bind-Value="card.Cost.White" placeholder="0" class="form-control" />
+      </div>
+      <div class="col">
+        <label for="Converted">Converted</label>
+        <InputNumber id="Converted" @bind-Value="card.Cost.Converted" placeholder="3" class="form-control" readonly />
       </div>
     </div>
     <div class="form-group form-row">
@@ -98,15 +119,18 @@
 
   protected override async Task OnInitializedAsync()
   {
-    card = new Card
-    {
-      Expansion = new Expansion()
-    };
+    await Task.Run(() =>
+      card = new Card
+      {
+        Cost = new Cost(),
+        Expansion = new Expansion()
+      });
   }
 
   private async void HandleValidSubmit()
   {
     await Http.PostJsonAsync("http://localhost:7071/api/cards", card);
+    await JSRuntime.InvokeAsync<string>("resetForm", "CardInput");
     Console.WriteLine("Card submitted successfully.");
   }
 }
