@@ -1,8 +1,10 @@
+@page "/cards"
 @page "/cards/view"
+@page "/cards/add"
 @using Cardalog.Models
 @inject HttpClient Http
 
-<h1>All cards</h1>
+<h1>Cards</h1>
 @if (card != null)
 {
   // This modal was built using BlazorStrap: https://blazorstrap.io/
