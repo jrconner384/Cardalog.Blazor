@@ -25,7 +25,14 @@
       </div>
       <div class="col">
         <label for="Condition">Condition</label>
-        <InputText id="Condition" @bind-Value="card.Condition" placeholder="" class="form-control" />
+        <InputSelect id="Condition" @bind-Value="card.Condition" placeholder="Please select a value..." class="form-control">
+          <option value="Poor">Poor</option>
+          <option value="Fair">Fair</option>
+          <option value="Good">Good</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Near mint">Near mint</option>
+          <option value="Mint">Mint</option>
+        </InputSelect>
       </div>
     </div>
 
