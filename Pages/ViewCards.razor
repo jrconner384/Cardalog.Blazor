@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-group form-row">
-        <div class="col-md-4">
+        <div class="col">
           <label for="Rarity">Rarity</label>
           <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control" />
         </div>
@@ -113,7 +113,7 @@
           <label for="ExpansionName">Name</label>
           <InputText id="ExpansionName" @bind-Value="card.Expansion.Name" placeholder="Dragons of Tarkir" class="form-control" />
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <label for="ExpansionAbbreviation">Abbreviation</label>
           <InputText id="ExpansionAbbreviation" @bind-Value="card.Expansion.Abbreviation" placeholder="DTK" class="form-control" />
         </div>
@@ -123,7 +123,7 @@
           <label for="ExpansionCopyright">Copyright</label>
           <InputText id="ExpansionCopyright" @bind-Value="card.Expansion.Copyright" placeholder="2015" class="form-control" />
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <label for="ExpansionCards">Count</label>
           <InputNumber id="ExpansionCards" @bind-Value="card.Expansion.TotalCards" placeholder="264" class="form-control" />
         </div>
@@ -132,9 +132,6 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </EditForm>
     </BSModalBody>
-    <BSModalFooter>
-        <BSButton>Do Something</BSButton>
-      </BSModalFooter>
   </BSModal>
 }
 
