@@ -3,30 +3,142 @@
 @inject HttpClient Http
 
 <h1>All cards</h1>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cardModal">
-  Add a card
-</button>
-<hr />
+@if (card != null)
+{
+  // This modal was built using BlazorStrap: https://blazorstrap.io/
+  <BSButton OnClick="@(() => addCard.Show())">Add a card</BSButton>
+  <BSModal @ref="addCard">
+    <BSModalHeader OnClick="@(() => addCard.Hide())">New card</BSModalHeader>
+    <BSModalBody>
+      <EditForm Model="@card" OnValidSubmit="@HandleValidSubmit" id="CardInput">
+      <DataAnnotationsValidator />
+      <ValidationSummary />
 
-<div class="modal fade" id="cardModal" tabIndex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="cardModalLabel">New card</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="form-group form-row">
+        <div class="col-md-6">
+          <label for="Title">Title</label>
+          <InputText id="Title" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Type">Type</label>
+          <InputText id="Type" @bind-Value="card.Type" placeholder="Artifact Creature" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Subtype">Subtype</label>
+          <InputText id="Subtype" @bind-Value="card.Subtype" placeholder="Golem" class="form-control" />
+        </div>
       </div>
-      <div class="modal-body">
-        ...
+
+      <div class="form-group form-row">
+        <div class="col-md-4">
+          <label for="Rarity">Rarity</label>
+          <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Condition">Condition</label>
+          <InputSelect id="Condition" @bind-Value="card.Condition" placeholder="Please select a value..." class="form-control">
+            <option value="Poor">Poor</option>
+            <option value="Fair">Fair</option>
+            <option value="Good">Good</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Near mint">Near mint</option>
+            <option value="Mint">Mint</option>
+          </InputSelect>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+      <div class="form-group form-row">
+        <div class="col">
+          <label for="Black">Black</label>
+          <InputNumber id="Black" @bind-Value="card.Cost.Black" placeholder="0" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Blue">Blue</label>
+          <InputNumber id="Blue" @bind-Value="card.Cost.Blue" placeholder="0" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Colorless">Colorless</label>
+          <InputNumber id="Colorless" @bind-Value="card.Cost.Colorless" placeholder="3" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Green">Green</label>
+          <InputNumber id="Green" @bind-Value="card.Cost.Green" placeholder="0" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Red">Red</label>
+          <InputNumber id="Red" @bind-Value="card.Cost.Red" placeholder="0" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="White">White</label>
+          <InputNumber id="White" @bind-Value="card.Cost.White" placeholder="0" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Converted">Converted</label>
+          <InputNumber id="Converted" @bind-Value="card.Cost.Converted" placeholder="3" class="form-control" readonly />
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+
+      <div class="form-group form-row">
+        <div class="col">
+          <label for="Text">Text</label>
+          <InputTextArea id="Text" @bind-Value="card.Text" placeholder="Defender. Custodian of the Trove enters the battlefield tapped." class="form-control" />
+        </div>
+        <div class="col">
+          <label for="FlavorText">Flavor Text</label>
+          <InputTextArea id="FlavorText" @bind-Value="card.FlavorText" placeholder="Silumgar delights in repurposing the treasures of other clans to serve his own ravenous greed." class="form-control" />
+        </div>
+      </div>
+
+      <div class="form-group form-row">
+        <div class="col-md-2">
+          <label for="Power">Power</label>
+          <InputNumber id="Power" @bind-Value="card.Power" placeholder="2" class="form-control" />
+        </div>
+        <div class="col-md-2">
+          <label for="Toughness">Toughness</label>
+          <InputNumber id="Toughness" @bind-Value="card.Toughness" placeholder="5" class="form-control" />
+        </div>
+        <div class="col-md-2">
+          <label for="CardNumber">Number</label>
+          <InputNumber id="CardNumber" @bind-Value="card.CardNumber" placeholder="236" class="form-control" />
+        </div>
+        <div class="col">
+          <label for="Artist">Artist</label>
+          <InputText id="Artist" @bind-Value="card.Artist" placeholder="Raoul Vitale" class="form-control" />
+        </div>
+      </div>
+
+      <h2>Expansion</h2>
+      <div class="form-group form-row">
+        <div class="col">
+          <label for="ExpansionName">Name</label>
+          <InputText id="ExpansionName" @bind-Value="card.Expansion.Name" placeholder="Dragons of Tarkir" class="form-control" />
+        </div>
+        <div class="col-md-2">
+          <label for="ExpansionAbbreviation">Abbreviation</label>
+          <InputText id="ExpansionAbbreviation" @bind-Value="card.Expansion.Abbreviation" placeholder="DTK" class="form-control" />
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <div class="col">
+          <label for="ExpansionCopyright">Copyright</label>
+          <InputText id="ExpansionCopyright" @bind-Value="card.Expansion.Copyright" placeholder="2015" class="form-control" />
+        </div>
+        <div class="col-md-2">
+          <label for="ExpansionCards">Count</label>
+          <InputNumber id="ExpansionCards" @bind-Value="card.Expansion.TotalCards" placeholder="264" class="form-control" />
+        </div>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </EditForm>
+    </BSModalBody>
+    <BSModalFooter>
+        <BSButton>Do Something</BSButton>
+      </BSModalFooter>
+  </BSModal>
+}
+
+<hr />
 
 @if (cards == null)
 {
@@ -76,9 +188,24 @@ else
 
 @code {
   private Card[] cards;
+  private Card card;
+  private BSModal addCard;
 
   protected override async Task OnInitializedAsync()
   {
     cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
+    await Task.Run(() =>
+      card = new Card
+      {
+        Cost = new Cost(),
+        Expansion = new Expansion()
+      });
+  }
+
+  private async void HandleValidSubmit()
+  {
+    await Http.PostJsonAsync("http://localhost:7071/api/cards", card);
+    addCard.Hide();
+    Console.WriteLine("Card submitted successfully.");
   }
 }
