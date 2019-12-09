@@ -1,11 +1,12 @@
 ﻿@inherits LayoutComponentBase
+@inject IBootstrapCSS BootstrapCSS
 
 <div class="sidebar">
     <NavMenu />
 </div>
 
 <div class="main">
-    <div class="top-row px-4">
+    <div class="top-row px-4" style="z-index: 1">
         <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
     </div>
 
@@ -13,3 +14,11 @@
         @Body
     </div>
 </div>
+
+@code
+{
+  protected override async Task OnInitializedAsync()
+  {
+    await BootstrapCSS.SetBootstrapCSS("cyborg", "4.3.1");
+  }
+}
