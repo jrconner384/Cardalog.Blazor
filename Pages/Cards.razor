@@ -37,7 +37,12 @@
       <div class="form-group form-row">
         <div class="col">
           <label for="Rarity">Rarity</label>
-          <InputText id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control" />
+          <InputSelect id="Rarity" @bind-Value="card.Rarity" placeholder="Common" class="form-control">
+            <option value="Common">Common</option>
+            <option value="Uncommon">Uncommon</option>
+            <option value="Rare">Rare</option>
+            <option value="Legendary">Legendary</option>
+          </InputSelect>
         </div>
         <div class="col">
           <label for="Condition">Condition</label>
@@ -152,7 +157,10 @@ else
     <BSCard Color="Color.Dark" IsOutline="true">
       <BSCard CardType="CardType.Header">
         <div class="card-title">@card.Title</div>
-        <div class="card-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
+        @if (card.Cost.Converted > 0)
+        {
+          <div class="card-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
+        }
       </BSCard>
       <BSCard CardType="CardType.Body" Color="Color.Dark">
         @if (string.IsNullOrWhiteSpace(card.Subtype))
@@ -179,7 +187,7 @@ else
         </BSCard>
       </BSCard>
       <BSCard CardType="CardType.Header">
-        @if (card.Power != null)
+        @if (card.Toughness != null && card.Toughness.Value != 0)
         {
           <div class="power-toughness">
             <div class="col-sm-1 oi oi-heart">@card.Power</div>
@@ -201,11 +209,7 @@ else
   {
     cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
     await Task.Run(() =>
-      card = new Card
-      {
-        Cost = new Cost(),
-        Expansion = new Expansion()
-      });
+      card = new Card());
   }
 
   private async void HandleValidSubmit()

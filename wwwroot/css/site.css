@@ -204,6 +204,7 @@ app {
 
 .card-title {
   float: left;
+  font-size: 150%;
 }
 
 .card-cost {
