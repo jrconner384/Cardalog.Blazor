@@ -186,6 +186,8 @@ app {
   @include make-container();
 }
 
+/* Stuff I added */
+
 .card {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -193,13 +195,9 @@ app {
   padding-bottom: 5px;
 }
 
-.banner {
-  width: 100%;
-  z-index: 1;
-}
-
 .main-view {
   z-index: -1;
+  padding-top: 60px;
 }
 
 .card-title {
@@ -229,4 +227,18 @@ app {
 
 .power-toughness {
   text-align: right;
+}
+
+.pagenav {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.pagenav a {
+  float: left;
+  display: block;
+  padding: 14px;
 }
