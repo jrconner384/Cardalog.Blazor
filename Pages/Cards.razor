@@ -4,11 +4,16 @@
 @using Cardalog.Models
 @inject HttpClient Http
 
-<div class="banner">
-  <h1>Cards</h1>
-  <!-- This modal was built using BlazorStrap: https://blazorstrap.io/ -->
-  <BSButton OnClick="@(() => addCard.Show())" class="oi oi-plus" IsOutline="true" Size="Size.Large" Color="Color.Success"></BSButton>
-</div>
+<BSNavbar IsExpand="true" IsDark="false" Color="Color.Light" class="pagenav">
+  <BSNavbarBrand Href="javascript:void(0);">Cards</BSNavbarBrand>
+  <BSCollapse IsOpen="true" IsNavbar="true">
+    <BSNav IsList="true" Class="mr-auto" IsNavbar="true">
+      <BSNavItem>
+        <BSButton OnClick="@(() => addCard.Show())" class="oi oi-plus" IsOutline="true" Size="Size.Large" Color="Color.Success"></BSButton>
+      </BSNavItem>
+    </BSNav>
+  </BSCollapse>
+</BSNavbar>
 
 @if (card != null)
 {
