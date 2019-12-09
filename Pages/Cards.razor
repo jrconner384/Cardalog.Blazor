@@ -159,48 +159,33 @@ else
   <div class="main-view">
   @foreach (var card in cards)
   {
-    <BSCard Color="Color.Dark" IsOutline="true">
-      <BSCard CardType="CardType.Header">
-        <div class="card-title">@card.Title</div>
+    <div class="card mtg">
+      <div class="card-body">
+        <h5 class="card-title">@card.Title</h5>
         @if (card.Cost.Converted > 0)
         {
           <div class="card-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
         }
-      </BSCard>
-      <BSCard CardType="CardType.Body" Color="Color.Dark">
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
         @if (string.IsNullOrWhiteSpace(card.Subtype))
         {
-          <BSCard CardType="CardType.Text">
-            <div class="card-type">@card.Type</div>
-            <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
-          </BSCard>
+          <div class="card-type">@card.Type</div>
+          <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
         }
         else
         {
-          <BSCard CardType="CardType.Text">
-            <div class="card-type">@card.Type - @card.Subtype</div>
-            <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
-          </BSCard>
+          <div class="card-type">@card.Type - @card.Subtype</div>
+          <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
         }
-        <BSCard CardType="CardType.Body">
-          <BSCard CardType="CardType.Text">
-            <div class="card-text">@card.Text</div>
-          </BSCard>
-          <BSCard CardType="CardType.Text">
-            <div class="card-flavor-text">@card.FlavorText</div>
-          </BSCard>
-        </BSCard>
-      </BSCard>
-      <BSCard CardType="CardType.Header">
-        @if (card.Toughness != null && card.Toughness.Value != 0)
-        {
-          <div class="power-toughness">
-            <div class="col-sm-1 oi oi-heart">@card.Power</div>
-            <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
-          </div>
-        }
-      </BSCard>
-    </BSCard>
+      </div>
+      <div class="card-text">@card.Text</div>
+      <div class="card-text card-flavor-text">@card.FlavorText</div>
+      <div class="power-toughness card-footer">
+        <div class="col-sm-1 oi oi-heart">@card.Power</div>
+        <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
+      </div>
+    </div>
   }
   </div>
 }

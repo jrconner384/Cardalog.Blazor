@@ -242,3 +242,9 @@ app {
   display: block;
   padding: 14px;
 }
+
+.card, .mtg {
+  padding: 15px;
+  max-width: 40rem;
+  min-width: 30rem;
+}
