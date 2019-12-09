@@ -192,3 +192,40 @@ app {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+
+.banner {
+  width: 100%;
+  z-index: 1;
+}
+
+.main-view {
+  z-index: -1;
+}
+
+.card-title {
+  float: left;
+}
+
+.card-cost {
+  float: right;
+}
+
+.card-type {
+  float: left;
+}
+
+.card-expansion {
+  float: right;
+}
+
+.card-text {
+  border-bottom: 1px solid;
+}
+
+.card-flavor-text {
+  font-style: italic;
+}
+
+.power-toughness {
+  text-align: right;
+}

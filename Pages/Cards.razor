@@ -4,11 +4,14 @@
 @using Cardalog.Models
 @inject HttpClient Http
 
-<h1>Cards</h1>
+<div class="banner">
+  <h1>Cards</h1>
+  <!-- This modal was built using BlazorStrap: https://blazorstrap.io/ -->
+  <BSButton OnClick="@(() => addCard.Show())" class="oi oi-plus" IsOutline="true" Size="Size.Large" Color="Color.Success"></BSButton>
+</div>
+
 @if (card != null)
 {
-  // This modal was built using BlazorStrap: https://blazorstrap.io/
-  <BSButton OnClick="@(() => addCard.Show())">Add a card</BSButton>
   <BSModal @ref="addCard">
     <BSModalHeader OnClick="@(() => addCard.Hide())">New card</BSModalHeader>
     <BSModalBody>
@@ -137,52 +140,56 @@
   </BSModal>
 }
 
-<hr />
-
 @if (cards == null)
 {
   <p><em>Loading...</em></p>
 }
 else
 {
+  <div class="main-view">
   @foreach (var card in cards)
   {
-    <div class="row card">
-      <div class="col-sm-12">
-        <div class="row title">
-          <div class="col-sm-6 title">@card.Title</div>
-          <div class="col-sm-1 cost">@card.Cost.Black |</div>
-          <div class="col-sm-1 cost">@card.Cost.Blue |</div>
-          <div class="col-sm-1 cost">@card.Cost.Colorless |</div>
-          <div class="col-sm-1 cost">@card.Cost.Green |</div>
-          <div class="col-sm-1 cost">@card.Cost.Red |</div>
-          <div class="col-sm-1 cost">@card.Cost.White</div>
-        </div>
-        <hr />
-        <div class="row type">
-          <div class="col-sm-2">@card.Type</div>
-          <div class="col-sm-2">- @card.Subtype</div>
-          <div class="col-sm-2 spacer"></div>
-          <div class="col-sm-3">@card.Expansion.Name</div>
-          <div class="col-sm-3">(@card.Rarity)</div>
-        </div>
-        <hr />
-        <div class="row text">
-          <div class="col-md-6">@card.Text</div>
-        </div>
-        <div class="row spacer"></div>
-        <div class="row ftext">
-          <div class="col-md-6">@card.FlavorText</div>
-        </div>
-        <hr />
-        <div class="row pt">
-          <div class="col-sm-10 spacer"></div>
-          <div class="col-sm-1 oi oi-heart">@card.Power</div>
-          <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
-        </div>
-      </div>
-    </div>
+    <BSCard Color="Color.Dark" IsOutline="true">
+      <BSCard CardType="CardType.Header">
+        <div class="card-title">@card.Title</div>
+        <div class="card-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
+      </BSCard>
+      <BSCard CardType="CardType.Body" Color="Color.Dark">
+        @if (string.IsNullOrWhiteSpace(card.Subtype))
+        {
+          <BSCard CardType="CardType.Text">
+            <div class="card-type">@card.Type</div>
+            <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          </BSCard>
+        }
+        else
+        {
+          <BSCard CardType="CardType.Text">
+            <div class="card-type">@card.Type - @card.Subtype</div>
+            <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          </BSCard>
+        }
+        <BSCard CardType="CardType.Body">
+          <BSCard CardType="CardType.Text">
+            <div class="card-text">@card.Text</div>
+          </BSCard>
+          <BSCard CardType="CardType.Text">
+            <div class="card-flavor-text">@card.FlavorText</div>
+          </BSCard>
+        </BSCard>
+      </BSCard>
+      <BSCard CardType="CardType.Header">
+        @if (card.Power != null)
+        {
+          <div class="power-toughness">
+            <div class="col-sm-1 oi oi-heart">@card.Power</div>
+            <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
+          </div>
+        }
+      </BSCard>
+    </BSCard>
   }
+  </div>
 }
 
 @code {
