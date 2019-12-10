@@ -171,29 +171,29 @@ else
   <div class="main-view">
   @foreach (var card in cards)
   {
-    <div class="card mtg">
-      <div class="card-body">
-        <h5 class="card-title">@card.Title</h5>
+    <div class="card mtg-card">
+      <div class="card-body mtg-title-row">
+        <div class="card-title mtg-title">@card.Title</div>
         @if (card.Cost.Converted > 0)
         {
-          <div class="card-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
+          <div class="mtg-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
         }
       </div>
-      <div class="card-subtitle mb-2 text-muted">
+      <div class="card-subtitle mb-2 text-muted mtg-type mtg-expansion">
         @if (string.IsNullOrWhiteSpace(card.Subtype))
         {
-          <div class="card-type">@card.Type</div>
-          <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          <div class="mtg-type">@card.Type</div>
+          <div class="mtg-expansion">@card.Expansion.Name (@card.Rarity)</div>
         }
         else
         {
-          <div class="card-type">@card.Type - @card.Subtype</div>
-          <div class="card-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          <div class="mtg-type">@card.Type - @card.Subtype</div>
+          <div class="mtg-expansion">@card.Expansion.Name (@card.Rarity)</div>
         }
       </div>
-      <div class="card-text">@card.Text</div>
-      <div class="card-text card-flavor-text">@card.FlavorText</div>
-      <div class="power-toughness card-footer">
+      <div class="card-text mtg-text">@card.Text</div>
+      <div class="card-text mtg-ftext">@card.FlavorText</div>
+      <div class="mtg-pt card-footer">
         <div class="col-sm-1 oi oi-heart">@card.Power</div>
         <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
       </div>
@@ -211,5 +211,11 @@ else
     cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
     await Task.Run(() =>
       card = new Card());
+  }
+
+  private async void HandleValidSubmit()
+  {
+    await Http.PostJsonAsync("http://localhost:7071/api/cards", card);
+    Console.WriteLine("Card submitted successfully.");
   }
 }

@@ -182,11 +182,53 @@ app {
     }
 }
 
-.row .card {
-  @include make-container();
+/* Stuff I added */
+
+.mtg-card {
+  margin-bottom: 5px;
 }
 
-/* Stuff I added */
+.mtg-title {
+  float: left;
+  font-size: 150%;
+}
+
+.mtg-cost {
+  float: right;
+  vertical-align: middle;
+}
+
+.mtg-text, .mtg-ftext {
+  padding: 5px;
+}
+
+.mtg-ftext {
+  font-style: italic;
+}
+
+.mtg-type {
+  float: left;
+  padding: 0px 0px 0px 5px;
+}
+
+.mtg-expansion {
+  float: right;
+  padding: 0px 5px 0px 0px;
+}
+
+.mtg-card {
+  max-width: 40rem;
+  min-width: 30rem;
+}
+
+.mtg-pt {
+  text-align: right;
+  justify-content: right;
+}
+
+/* .row .card {
+  @include make-container();
+}
 
 .card {
   margin-top: 5px;
@@ -200,33 +242,8 @@ app {
   padding-top: 60px;
 }
 
-.card-title {
-  float: left;
-  font-size: 150%;
-}
-
-.card-cost {
-  float: right;
-}
-
-.card-type {
-  float: left;
-}
-
-.card-expansion {
-  float: right;
-}
-
 .card-text {
   border-bottom: 1px solid;
-}
-
-.card-flavor-text {
-  font-style: italic;
-}
-
-.power-toughness {
-  text-align: right;
 }
 
 .pagenav {
@@ -241,10 +258,4 @@ app {
   float: left;
   display: block;
   padding: 14px;
-}
-
-.card, .mtg {
-  padding: 15px;
-  max-width: 40rem;
-  min-width: 30rem;
-}
+} */
