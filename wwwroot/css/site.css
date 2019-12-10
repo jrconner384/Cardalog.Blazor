@@ -186,6 +186,8 @@ app {
 
 .mtg-card {
   margin: 5px 5px 0px 0px;
+  min-width: 30rem;
+  padding: 0;
 }
 
 .mtg-title {
@@ -204,11 +206,6 @@ app {
   padding: 5px 5px 0px 0px;
 }
 
-.mtg-card {
-  max-width: 40rem;
-  min-width: 30rem;
-}
-
-.mtg-footer {
+.mtg-miscellany {
   font-size: 65%;
 }
