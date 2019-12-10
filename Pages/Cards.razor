@@ -179,6 +179,7 @@ else
           <div class="mtg-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
         }
       </div>
+      <span class="border-bottom"></span>
       <div class="card-subtitle mb-2 text-muted mtg-type mtg-expansion">
         @if (string.IsNullOrWhiteSpace(card.Subtype))
         {
@@ -191,11 +192,18 @@ else
           <div class="mtg-expansion">@card.Expansion.Name (@card.Rarity)</div>
         }
       </div>
+      <span class="border-bottom"></span>
       <div class="card-text mtg-text">@card.Text</div>
       <div class="card-text mtg-ftext">@card.FlavorText</div>
-      <div class="mtg-pt card-footer">
-        <div class="col-sm-1 oi oi-heart">@card.Power</div>
-        <div class="col-sm-1 oi oi-shield">@card.Toughness</div>
+      <div class="card-footer">
+        <div class="mtg-footer">
+          <div>@card.CardNumber/@card.Expansion.TotalCards</div>
+          <div>@card.Expansion.Abbreviation @card.Artist</div>
+        </div>
+        <div class="mtg-pt">
+          <div class="oi oi-heart"> @card.Power </div>
+          <div class="oi oi-shield"> @card.Toughness </div>
+        </div>
       </div>
     </div>
   }

@@ -208,12 +208,12 @@ app {
 
 .mtg-type {
   float: left;
-  padding: 0px 0px 0px 5px;
+  padding: 5px 0px 0px 5px;
 }
 
 .mtg-expansion {
   float: right;
-  padding: 0px 5px 0px 0px;
+  padding: 5px 5px 0px 0px;
 }
 
 .mtg-card {
@@ -221,7 +221,12 @@ app {
   min-width: 30rem;
 }
 
+.mtg-footer {
+  float: left;
+  text-transform: capitalize;
+  font-size: 60%;
+}
+
 .mtg-pt {
-  text-align: right;
-  justify-content: right;
+  float: right;
 }
