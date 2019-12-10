@@ -189,30 +189,18 @@ app {
 }
 
 .mtg-title {
-  float: left;
   font-size: 150%;
-}
-
-.mtg-cost {
-  float: right;
-  vertical-align: middle;
 }
 
 .mtg-text, .mtg-ftext {
   padding: 5px;
 }
 
-.mtg-ftext {
-  font-style: italic;
-}
-
 .mtg-type {
-  float: left;
   padding: 5px 0px 0px 5px;
 }
 
 .mtg-expansion {
-  float: right;
   padding: 5px 5px 0px 0px;
 }
 
@@ -222,11 +210,5 @@ app {
 }
 
 .mtg-footer {
-  float: left;
-  text-transform: capitalize;
   font-size: 60%;
-}
-
-.mtg-pt {
-  float: right;
 }

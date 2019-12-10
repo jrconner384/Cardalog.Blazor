@@ -173,34 +173,34 @@ else
   {
     <div class="card mtg-card">
       <div class="card-body mtg-title-row">
-        <div class="card-title mtg-title">@card.Title</div>
+        <div class="card-title float-left mtg-title align-bottom">@card.Title</div>
         @if (card.Cost.Converted > 0)
         {
-          <div class="mtg-cost">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
+          <div class="mtg-cost float-right">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
         }
       </div>
       <span class="border-bottom"></span>
       <div class="card-subtitle mb-2 text-muted mtg-type mtg-expansion">
         @if (string.IsNullOrWhiteSpace(card.Subtype))
         {
-          <div class="mtg-type">@card.Type</div>
-          <div class="mtg-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          <div class="mtg-type float-left">@card.Type</div>
+          <div class="mtg-expansion float-right">@card.Expansion.Name (@card.Rarity)</div>
         }
         else
         {
-          <div class="mtg-type">@card.Type - @card.Subtype</div>
-          <div class="mtg-expansion">@card.Expansion.Name (@card.Rarity)</div>
+          <div class="mtg-type float-left">@card.Type - @card.Subtype</div>
+          <div class="mtg-expansion float-right">@card.Expansion.Name (@card.Rarity)</div>
         }
       </div>
       <span class="border-bottom"></span>
       <div class="card-text mtg-text">@card.Text</div>
-      <div class="card-text mtg-ftext">@card.FlavorText</div>
+      <div class="card-text mtg-ftext font-italic">@card.FlavorText</div>
       <div class="card-footer">
-        <div class="mtg-footer">
-          <div>@card.CardNumber/@card.Expansion.TotalCards</div>
+        <div class="mtg-footer text-uppercase float-left">
+          <div>@card.CardNumber/@card.Expansion.TotalCards &#169;@card.Expansion.Copyright</div>
           <div>@card.Expansion.Abbreviation @card.Artist</div>
         </div>
-        <div class="mtg-pt">
+        <div class="mtg-pt float-right">
           <div class="oi oi-heart"> @card.Power </div>
           <div class="oi oi-shield"> @card.Toughness </div>
         </div>
