@@ -185,7 +185,7 @@ app {
 /* Stuff I added */
 
 .mtg-card {
-  margin-bottom: 5px;
+  margin: 5px 5px 0px 0px;
 }
 
 .mtg-title {
@@ -211,10 +211,6 @@ app {
 
 .mtg-footer {
   font-size: 60%;
-}
-
-.main-view {
-  padding-top: 7rem;
 }
 
 .navbar {

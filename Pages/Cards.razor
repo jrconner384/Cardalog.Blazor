@@ -5,8 +5,6 @@
 @using Cardalog.Shared.Components
 @inject HttpClient Http
 
-<CardsMenu ModalName="newCardModal" />
-
 <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="newCardModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -29,7 +27,7 @@
 }
 else
 {
-  <div class="main-view">
+  <div class="main-view container row">
   @foreach (var card in cards)
   {
     <CardDisplayCard card="@card" />
