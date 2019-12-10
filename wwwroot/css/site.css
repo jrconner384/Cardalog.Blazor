@@ -225,37 +225,3 @@ app {
   text-align: right;
   justify-content: right;
 }
-
-/* .row .card {
-  @include make-container();
-}
-
-.card {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.main-view {
-  z-index: -1;
-  padding-top: 60px;
-}
-
-.card-text {
-  border-bottom: 1px solid;
-}
-
-.pagenav {
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-}
-
-.pagenav a {
-  float: left;
-  display: block;
-  padding: 14px;
-} */
