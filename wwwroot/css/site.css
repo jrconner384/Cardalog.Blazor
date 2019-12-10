@@ -212,3 +212,11 @@ app {
 .mtg-footer {
   font-size: 60%;
 }
+
+.main-view {
+  padding-top: 7rem;
+}
+
+.navbar {
+  z-index: 1;
+}

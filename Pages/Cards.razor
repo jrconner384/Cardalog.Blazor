@@ -5,18 +5,8 @@
 @using Cardalog.Shared.Components
 @inject HttpClient Http
 
-<!-- <BSNavbar IsExpand="true" IsDark="false" Color="Color.Light" class="pagenav">
-  <BSNavbarBrand Href="javascript:void(0);">Cards</BSNavbarBrand>
-  <BSCollapse IsOpen="true" IsNavbar="true">
-    <BSNav IsList="true" Class="mr-auto" IsNavbar="true">
-      <BSNavItem>
-        <BSButton OnClick="@(() => addCard.Show())" class="oi oi-plus" IsOutline="true" Size="Size.Large" Color="Color.Success"></BSButton>
-      </BSNavItem>
-    </BSNav>
-  </BSCollapse>
-</BSNavbar> -->
+<CardsMenu ModalName="newCardModal" />
 
-<button type="button" class="btn btn-outline-success oi oi-plus" data-toggle="modal" data-target="#newCardModal"></button>
 <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="newCardModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
