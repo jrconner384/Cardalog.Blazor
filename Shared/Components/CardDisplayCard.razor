@@ -31,10 +31,13 @@
       <div>@card.CardNumber/@card.Expansion.TotalCards &#169;@card.Expansion.Copyright</div>
       <div>@card.Expansion.Abbreviation @card.Artist</div>
     </div>
-    <div class="mtg-pt float-right">
-      <div class="oi oi-heart"> @card.Power </div>
-      <div class="oi oi-shield"> @card.Toughness </div>
-    </div>
+    @if (card.Toughness.HasValue && card.Toughness.Value > 0)
+    {
+      <div class="mtg-pt float-right">
+        <div class="oi oi-heart"> @card.Power </div>
+        <div class="oi oi-shield"> @card.Toughness </div>
+      </div>
+    }
   </div>
 </div>
 
