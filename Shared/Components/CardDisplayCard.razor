@@ -15,12 +15,12 @@
     @if (string.IsNullOrWhiteSpace(card.Subtype))
     {
       <div class="mtg-type float-left">@card.Type</div>
-      <div class="mtg-expansion float-right">@card.Expansion.Name (@card.Rarity)</div>
+      <div class="mtg-expansion float-right">@card.Expansion.Name</div>
     }
     else
     {
       <div class="mtg-type float-left">@card.Type - @card.Subtype</div>
-      <div class="mtg-expansion float-right">@card.Expansion.Name (@card.Rarity)</div>
+      <div class="mtg-expansion float-right">@card.Expansion.Name</div>
     }
   </div>
   <span class="border-bottom"></span>
@@ -29,7 +29,7 @@
   <div class="card-footer">
     <div class="mtg-footer text-uppercase float-left">
       <div>@card.CardNumber/@card.Expansion.TotalCards &#169;@card.Expansion.Copyright</div>
-      <div>@card.Expansion.Abbreviation @card.Artist</div>
+      <div>@card.Expansion.Abbreviation (@card.Rarity[0]) @card.Artist</div>
     </div>
     @if (card.Toughness.HasValue && card.Toughness.Value > 0)
     {
