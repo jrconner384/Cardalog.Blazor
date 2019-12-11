@@ -2,7 +2,7 @@
 @using Cardalog.Models
 @inject HttpClient Http
 
-<div class="card mtg-card col-sm">
+<div class="card mtg-card col">
   <div class="card-body mtg-title-row">
     <div class="card-title float-left mtg-title align-bottom">@card.Title</div>
     @if (card.Cost.Converted > 0)
@@ -10,8 +10,7 @@
       <div class="mtg-cost float-right">@card.Cost.Black @card.Cost.Blue @card.Cost.Colorless @card.Cost.Green @card.Cost.Red @card.Cost.White</div>
     }
   </div>
-  <span class="border-bottom"></span>
-  <div class="card-subtitle mb-2 text-muted mtg-type mtg-expansion">
+  <div class="card-subtitle mb-2 text-muted mtg-type-row border-top border-bottom">
     @if (string.IsNullOrWhiteSpace(card.Subtype))
     {
       <div class="mtg-type float-left">@card.Type</div>
@@ -23,7 +22,6 @@
       <div class="mtg-expansion float-right">@card.Expansion.Name</div>
     }
   </div>
-  <span class="border-bottom"></span>
   <div class="card-text mtg-text">@card.Text</div>
   <div class="card-text mtg-ftext font-italic">@card.FlavorText</div>
   <div class="card-footer mtg-footer w-100">

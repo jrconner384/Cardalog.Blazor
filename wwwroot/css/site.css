@@ -186,24 +186,32 @@ app {
 
 .mtg-card {
   margin: 5px 5px 0px 0px;
-  min-width: 30rem;
+  min-width: 22rem;
+  min-height: 28rem;
   padding: 0;
 }
 
+.mtg-title-row {
+  max-height: 5rem;
+}
+
 .mtg-title {
-  font-size: 150%;
+  font-size: 125%;
+  padding: 0;
+}
+
+.mtg-cost {
+  font-size: 90%;
 }
 
 .mtg-text, .mtg-ftext {
   padding: 5px;
+  flex-grow: inherit;
+  flex-basis: inherit;
 }
 
-.mtg-type {
-  padding: 5px 0px 0px 5px;
-}
-
-.mtg-expansion {
-  padding: 5px 5px 0px 0px;
+.mtg-type-row {
+  padding: 5px;
 }
 
 .mtg-miscellany {
