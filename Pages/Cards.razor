@@ -36,10 +36,10 @@ else
 }
 
 @code {
-  private Card[] cards;
+  private IEnumerable<Card> cards;
 
   protected override async Task OnInitializedAsync()
   {
-    cards = await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards");
+    cards = (await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards")).OrderBy(it => it.Title);
   }
 }
