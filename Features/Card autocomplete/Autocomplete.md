@@ -7,9 +7,13 @@ If a card already exists, the user should be able to select it when creating a c
   - [Frequency of update](#frequency-of-update)
     - [Timer mechanic](#timer-mechanic)
   - [Results set](#results-set)
-    - [Case study: Ember Mage](#case-study-ember-mage)
+    - [Case study: Finding Ember Mage](#case-study-finding-ember-mage)
       - [Condition research](#condition-research)
   - [Filling the form](#filling-the-form)
+  - [Continued editing](#continued-editing)
+    - [Case study: Adding Ember Mage to a new expansion](#case-study-adding-ember-mage-to-a-new-expansion)
+    - [Case study: Adding Ember Mage to an extant expansion](#case-study-adding-ember-mage-to-an-extant-expansion)
+    - [Expansion autocompletion](#expansion-autocompletion)
 
 ## Results list
 
@@ -45,7 +49,7 @@ I have to be careful about using a timer. It smells like the kind of thing that 
 
 The list must not contain duplicates. A card can be part of more than one expansion and, for now, I want those to be treated like unique cards. Cards with the same title but different conditions, however, are not distinct.
 
-### Case study: Ember Mage
+### Case study: Finding Ember Mage
 
 - There's a card called Ember Mage.
 - It belongs to the expansions Alpha and Beta.
@@ -92,3 +96,50 @@ I need to figure out if implementing the above is sufficient or condition leads 
 ## Filling the form
 
 I can't decide whether a click or double click is the right gesture but, either way, one of them will populate the form with the chosen card's data. The title text box should lose focus so the results list will be dismissed.
+
+## Continued editing
+
+Aside from adding a condition, the user may have to edit some of the autocompleted values. The only real case for this I can see is when the user is adding the card to an expansion it hasn't already been included in.
+
+### Case study: Adding Ember Mage to a new expansion
+
+See [Finding Ember Mage](#case-study-finding-ember-mage) for the initial conditions of this case.
+
+1. A new expansion, Omega, is released with a new version of Ember Mage.
+   1. The expansion may not be newly release. Rather, it might just be that nobody has added a card from that expansion before.
+2. The card's text and flavor text have been changed.
+3. Nobody has entered this card into Cardalog yet.
+4. I select the Alpha version from the autocomplete list.
+
+The form is populated with the Alpha version of the card. I will need to update the Text and Flavor Text fields, as well as the Expansion section of the form.
+
+### Case study: Adding Ember Mage to an extant expansion
+
+See [above](#case-study-adding-ember-mage-to-a-new-expansion) for a similar use case.
+
+1. I'm adding a copy of Ember Mage from the Gamma expansion to my collection.
+2. Only the expansion has changed.
+3. Nobody has entered this version before.
+4. Other cards from the Gamma expansion have been added.
+5. The results list will contain Ember Mage (Alpha) and Ember Mage (Beta) but not Ember Mage (Gamma).
+6. I select the Alpha version from the autocomplete list.
+
+As above, the form is populated withe the Alpha version of the card. This time, I only need to modify the expansion.
+
+I want expansions to autocomplete just like cards so, when I start typing the name of the expansion, I want to be presented with the same experience as when I type in the title.
+
+### Expansion autocompletion
+
+This is a sort of side mission spawned from [one of the case studies](#case-study-adding-ember-mage-to-an-extant-expansion). The requirements for this portion are very similar to the [results list](#results-list) requirements.
+
+1. The list will be sorted alphabetically.
+2. The results will be those expansions with name starting with the contents of the text box.
+3. The list will be scrollable.
+4. If an option is clicked, the form will autopopulate the expansion section **only**.
+   1. It will _not_ save the card automatically.
+   2. The user will be able to edit the form.
+   3. If the user edits the expansion name, the autocomplete feature must continue working. If a new expansion is selected, the entire expansion section must be overwritten.
+5. The results list must not be visible when the name box does not have focus.
+6. The results will be a set (i.e. no duplicates).
+
+Case studies and implementation details should be very similar to the entire card's autocomplete feature so I won't rehash any of that here. I'll only dive in to cases and requirements unique to expansions.
