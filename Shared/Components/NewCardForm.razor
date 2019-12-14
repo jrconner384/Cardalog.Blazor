@@ -12,6 +12,7 @@
       <div class="col-md-6">
         <label for="Title">Title</label>
         <InputText id="Title" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
+        <CardMatches cards="@cards" searchTerm="blo" />
       </div>
       <div class="col">
         <label for="Type">Type</label>
@@ -135,11 +136,12 @@
 
 @code {
   private Card card;
+  private IEnumerable<Card> cards;
 
   protected override async Task OnInitializedAsync()
   {
-    await Task.Run(() =>
-      card = new Card());
+    await Task.Run(() => card = new Card());
+    cards = (await Http.GetJsonAsync<Card[]>("http://localhost:7071/api/cards")).OrderBy(it => it.Title);
   }
 
   private async void HandleValidSubmit()

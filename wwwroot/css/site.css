@@ -200,6 +200,21 @@ app {
   padding: 0;
 }
 
+.mtg-title-results {
+  position: absolute;
+  width: inherit;
+  z-index: 1;
+  overflow-y: scroll;
+  height: 20rem;
+  max-height: 100%;
+}
+
+.mtg-title-result-row {
+  padding: 5px;
+  height: 40%;
+  font-size: 70%;
+}
+
 .mtg-cost {
   font-size: 90%;
 }

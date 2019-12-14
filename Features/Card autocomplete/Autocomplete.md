@@ -60,12 +60,14 @@ The list must not contain duplicates. A card can be part of more than one expans
 
 I expect the results list to include two named "Ember Mage" and any other cards starting with "Ember". I'm not prescribing the UI here, but it will be something like this.
 
+```txt
 +--------------------+
 | Ember Mage (Alpha) |
 | Ember Mage (Beta)  |
 | Embers (Starter)   |
 | Emberstorm (Alpha) |
 +--------------------+
+```
 
 The client application already has a collection of cards in memory (**note** it might be a good idea to call the API to update the collection when the new card form is opened). The collection needs to be filtered a few ways.
 
