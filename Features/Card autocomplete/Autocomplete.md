@@ -89,6 +89,8 @@ public override int GetHashCode()
 }
 ```
 
+See [MSFT docs](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.distinct?view=netframework-4.8) for the inspiration.
+
 #### Condition research
 
 I need to figure out if implementing the above is sufficient or condition leads to duplicates.
