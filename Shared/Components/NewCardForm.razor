@@ -148,12 +148,10 @@
   private async void HandleValidSubmit()
   {
     await Http.PostJsonAsync("http://localhost:7071/api/cards", card);
-    Console.WriteLine("Card submitted successfully.");
   }
 
   private void Input(ChangeEventArgs e)
   {
-    Console.WriteLine($"Input: {e.Value.ToString()}");
     searchTerm = e.Value.ToString();
   }
 }

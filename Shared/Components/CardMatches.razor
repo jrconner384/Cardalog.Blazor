@@ -20,7 +20,6 @@
 
   public IEnumerable<Card> GetMatches()
   {
-    Console.WriteLine($"Searching for \"{searchTerm}\"");
     if (searchTerm?.Length > 0)
     {
       return cards.Where(it => it.Title.StartsWith(searchTerm, true, System.Globalization.CultureInfo.InvariantCulture));
