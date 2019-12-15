@@ -12,7 +12,7 @@
       <div class="col-md-6">
         <label for="Title">Title</label>
         <InputText id="Title" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
-        <CardMatches cards="@cards" searchTerm="blo" />
+        <CardMatches cards="@cards" searchTerm="@card.Title" />
       </div>
       <div class="col">
         <label for="Type">Type</label>
