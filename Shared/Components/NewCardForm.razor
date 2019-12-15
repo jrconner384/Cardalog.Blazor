@@ -11,8 +11,8 @@
     <div class="form-group form-row">
       <div class="col-md-6">
         <label for="Title">Title</label>
-        <InputText id="Title" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
-        <CardMatches cards="@cards" searchTerm="@card.Title" />
+        <InputText id="Title" @oninput="Input" autocomplete="off" @bind-Value="card.Title" placeholder="Custodian of the Trove" class="form-control" />
+        <CardMatches cards="@cards" searchTerm="@searchTerm" />
       </div>
       <div class="col">
         <label for="Type">Type</label>
@@ -137,6 +137,7 @@
 @code {
   private Card card;
   private IEnumerable<Card> cards;
+  private string searchTerm = string.Empty;
 
   protected override async Task OnInitializedAsync()
   {
@@ -148,5 +149,11 @@
   {
     await Http.PostJsonAsync("http://localhost:7071/api/cards", card);
     Console.WriteLine("Card submitted successfully.");
+  }
+
+  private void Input(ChangeEventArgs e)
+  {
+    Console.WriteLine($"Input: {e.Value.ToString()}");
+    searchTerm = e.Value.ToString();
   }
 }
