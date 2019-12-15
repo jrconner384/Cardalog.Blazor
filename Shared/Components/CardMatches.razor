@@ -1,0 +1,29 @@
+@namespace Cardalog.Shared.Components
+@using Cardalog.Models
+
+@if (cards.Count() > 0 && GetMatches().Count() > 0)
+{
+  <ul class="list-group mtg-title-results">
+    @foreach (var card in GetMatches())
+    {
+      <li class="list-group-item mtg-title-result-row">@card.Title</li>
+    }
+  </ul>
+}
+
+@code {
+  [Parameter]
+  public IEnumerable<Card> cards { get; set; }
+
+  [Parameter]
+  public string searchTerm { get; set; }
+
+  public IEnumerable<Card> GetMatches()
+  {
+    if (searchTerm.Length > 0)
+    {
+      return cards.Where(it => it.Title.StartsWith(searchTerm, true, System.Globalization.CultureInfo.InvariantCulture));
+    }
+    return new List<Card>();
+  }
+}
