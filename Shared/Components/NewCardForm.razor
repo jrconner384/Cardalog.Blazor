@@ -12,7 +12,7 @@
       <div class="col">
         <label for="Title">Title</label>
         <InputText id="Title" @oninput="Input" autocomplete="off" @bind-Value="card.Title" class="form-control" />
-        <CardMatches Cards="@cards" SearchTerm="@searchTerm" CardSelected="@CardSelected" />
+        <CardMatches Cards="@cards" SearchTerm="@searchTerm" CardSelected="@CardSelected" IsHidden="@isHidden" />
       </div>
     </div>
 
@@ -142,6 +142,7 @@
   private Card card;
   private IEnumerable<Card> cards;
   private string searchTerm = string.Empty;
+  public bool isHidden = true;
 
   protected override async Task OnInitializedAsync()
   {
@@ -156,6 +157,7 @@
 
   private void Input(ChangeEventArgs e)
   {
+    isHidden = false;
     searchTerm = e.Value.ToString();
   }
 
@@ -184,5 +186,6 @@
         Copyright = match.Expansion.Copyright
       }
     };
+    isHidden = true;
   }
 }

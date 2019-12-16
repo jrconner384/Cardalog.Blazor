@@ -3,7 +3,7 @@
 
 @if (Cards.Count() > 0 && GetMatches().Count() > 0)
 {
-  <InputSelect id="mtg-card-select" @bind-Value="titleExpansion">
+  <InputSelect id="mtg-card-select" @bind-Value="titleExpansion" hidden="@IsHidden">
     <option value="Matches">Matches</option>
     @foreach (var te in GetMatches())
     {
@@ -21,6 +21,9 @@
 
   [Parameter]
   public EventCallback<string> CardSelected { get; set; }
+
+  [Parameter]
+  public bool IsHidden { get; set; }
 
   private string titleExpansion;
 

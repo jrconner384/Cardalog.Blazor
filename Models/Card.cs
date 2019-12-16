@@ -27,7 +27,7 @@ namespace Cardalog.Models
       }
     }
 
-    public string TitleExpansion => $"{Title} || {Expansion.Name}";
+    public string TitleExpansion => $"{Title} ({Expansion.Name})";
 
     private string type;
     [Required]
