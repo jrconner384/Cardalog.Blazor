@@ -21,19 +21,19 @@ As the user types in the card title, a list of matches will be presented.
 
 Requirements:
 
-1. The list will be sorted alphabetically.
-2. The results will be those cards with title starting with the contents of the text box.
-   1. For example, use `StartsWith` to create the list of results.
+1. ~~The list will be sorted alphabetically.~~
+2. ~~The results will be those cards with title starting with the contents of the text box.~~
+   1. ~~For example, use `StartsWith` to create the list of results.~~
 3. When the user hovers over a result, the card's info will be displayed.
    1. Consider using `CardDisplayCard.razor` in a tooltip to render the results.
-4. The list will be scrollable.
-5. If an option is clicked, the form will autopopulate with that card's info.
-   1. It will _not_ set the card's condition.
-   2. It will _not_ save the card automatically.
-   3. The user will be able to edit the form.
-   4. If the user edits the title, the autocomplete feature must continue working. If a new card is selected, _every_ field in the form must be overwritten.
+4. ~~The list will be scrollable.~~
+5. ~~If an option is clicked, the form will autopopulate with that card's info.~~
+   1. ~~It will _not_ set the card's condition.~~
+   2. ~~It will _not_ save the card automatically.~~
+   3. ~~The user will be able to edit the form.~~
+   4. ~~If the user edits the title, the autocomplete feature must continue working. If a new card is selected, _every_ field in the form must be overwritten.~~
 6. The results list must not be visible when the title text box does not have focus.
-7. The results will be a set (i.e. no duplicates).
+7. ~~The results will be a set (i.e. no duplicates).~~
 
 ## Frequency of update
 
