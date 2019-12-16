@@ -12,7 +12,7 @@
       <div class="col">
         <label for="Title">Title</label>
         <InputText id="Title" @oninput="Input" autocomplete="off" @bind-Value="card.Title" class="form-control" />
-        <CardMatches Cards="@cards" SearchTerm="@searchTerm" CardSelected="@CardSelected" IsHidden="@isHidden" />
+        <CardMatches Cards="@cards" SearchTerm="@searchTerm" CardSelected="@CardSelected" IsHidden="@areResultsHidden" />
       </div>
     </div>
 
@@ -133,7 +133,7 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-secondary" @onclick="ResetForm" data-dismiss="modal">Close</button>
     <button type="submit" class="btn btn-primary">Submit</button>
   </EditForm>
 }
@@ -142,7 +142,7 @@
   private Card card;
   private IEnumerable<Card> cards;
   private string searchTerm = string.Empty;
-  public bool isHidden = true;
+  public bool areResultsHidden = true;
 
   protected override async Task OnInitializedAsync()
   {
@@ -157,7 +157,7 @@
 
   private void Input(ChangeEventArgs e)
   {
-    isHidden = false;
+    areResultsHidden = false;
     searchTerm = e.Value.ToString();
   }
 
@@ -186,6 +186,12 @@
         Copyright = match.Expansion.Copyright
       }
     };
-    isHidden = true;
+    areResultsHidden = true;
+  }
+
+  private void ResetForm()
+  {
+    card = new Card();
+    areResultsHidden = true;
   }
 }
