@@ -26,6 +26,7 @@ Requirements:
    1. ~~For example, use `StartsWith` to create the list of results.~~
 3. When the user hovers over a result, the card's info will be displayed.
    1. Consider using `CardDisplayCard.razor` in a tooltip to render the results.
+   2. [EDIT - possible tech debt] This would be nice to have but I've had trouble doing it. The user can click on an option and see what the card looks like after the form auto-fills. I'm probably going to put this on the wish list.
 4. ~~The list will be scrollable.~~
 5. ~~If an option is clicked, the form will autopopulate with that card's info.~~
    1. ~~It will _not_ set the card's condition.~~
@@ -33,7 +34,7 @@ Requirements:
    3. ~~The user will be able to edit the form.~~
    4. ~~If the user edits the title, the autocomplete feature must continue working. If a new card is selected, _every_ field in the form must be overwritten.~~
 6. The results list must not be visible when the title text box does not have focus.
-   1. [EDIT - possible tech debt] Currently, I got the list to hide after a value is selected but not when the title box loses focus. I tried using focus events but that hid the list too aggressively (i.e. when trying to expand the box).
+   1. [EDIT - possible tech debt] Currently, I got the list to hide after a value is selected but not when the title box loses focus. I tried using focus events but that hid the list too aggressively (i.e. when trying to expand the box). This isn't worth holding up merging the feature to master, so I'll probably move this to the wish list.
 7. ~~The results will be a set (i.e. no duplicates).~~
 
 ## Frequency of update
