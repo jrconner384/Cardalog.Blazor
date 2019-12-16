@@ -3,11 +3,11 @@
 
 @if (Cards.Count() > 0 && GetMatches().Count() > 0)
 {
-  <InputSelect id="mtg-card-select" @bind-Value="title">
+  <InputSelect id="mtg-card-select" @bind-Value="titleExpansion">
     <option value="Matches">Matches</option>
-    @foreach (var title in GetMatches())
+    @foreach (var te in GetMatches())
     {
-      <option value="@title" @onclick="OnClick">@title</option>
+      <option value="@te" @onclick="OnClick">@te</option>
     }
   </InputSelect>
 }
@@ -22,7 +22,7 @@
   [Parameter]
   public EventCallback<string> CardSelected { get; set; }
 
-  private string title;
+  private string titleExpansion;
 
   public IEnumerable<string> GetMatches()
   {
@@ -37,8 +37,8 @@
 
   private void OnClick()
   {
-    Console.WriteLine($"Clicked value {title}");
-    CardSelected.InvokeAsync(title);
-    title = null; // Title must be reset else the drop down list misbehaves when the search term is changed.
+    Console.WriteLine($"Clicked value {titleExpansion}");
+    CardSelected.InvokeAsync(titleExpansion);
+    titleExpansion = null; // Title must be reset else the drop down list misbehaves when the search term is changed.
   }
 }
