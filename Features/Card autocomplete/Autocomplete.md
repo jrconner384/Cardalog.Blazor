@@ -33,6 +33,7 @@ Requirements:
    3. ~~The user will be able to edit the form.~~
    4. ~~If the user edits the title, the autocomplete feature must continue working. If a new card is selected, _every_ field in the form must be overwritten.~~
 6. The results list must not be visible when the title text box does not have focus.
+   1. [EDIT - possible tech debt] Currently, I got the list to hide after a value is selected but not when the title box loses focus. I tried using focus events but that hid the list too aggressively (i.e. when trying to expand the box).
 7. ~~The results will be a set (i.e. no duplicates).~~
 
 ## Frequency of update
