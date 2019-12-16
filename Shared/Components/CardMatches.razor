@@ -1,29 +1,42 @@
 @namespace Cardalog.Shared.Components
 @using Cardalog.Models
 
-@if (cards.Count() > 0 && GetMatches().Count() > 0)
+@if (Cards.Count() > 0 && GetMatches().Count() > 0)
 {
-  <ul class="list-group mtg-title-results">
+  <InputSelect id="mtg-card-select" @bind-Value="title">
+    <option value="Matches">Matches</option>
     @foreach (var card in GetMatches())
     {
-      <li class="list-group-item mtg-title-result-row">@card.Title</li>
+      <option value="@card.Title" @onclick="OnClick">@card.Title</option>
     }
-  </ul>
+  </InputSelect>
 }
 
 @code {
   [Parameter]
-  public IEnumerable<Card> cards { get; set; }
+  public IEnumerable<Card> Cards { get; set; }
 
   [Parameter]
-  public string searchTerm { get; set; }
+  public string SearchTerm { get; set; }
+
+  [Parameter]
+  public EventCallback<string> CardSelected { get; set; }
+
+  private string title;
 
   public IEnumerable<Card> GetMatches()
   {
-    if (searchTerm?.Length > 0)
+    if (SearchTerm?.Length > 0)
     {
-      return cards.Where(it => it.Title.StartsWith(searchTerm, true, System.Globalization.CultureInfo.InvariantCulture));
+      return Cards.Where(it => it.Title.StartsWith(SearchTerm, true, System.Globalization.CultureInfo.InvariantCulture));
     }
     return new List<Card>();
+  }
+
+  private void OnClick()
+  {
+    Console.WriteLine($"Clicked value {title}");
+    CardSelected.InvokeAsync(title);
+    title = null; // Title must be reset else the drop down list misbehaves when the search term is changed.
   }
 }
