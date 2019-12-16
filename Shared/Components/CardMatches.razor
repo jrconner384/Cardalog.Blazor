@@ -5,9 +5,9 @@
 {
   <InputSelect id="mtg-card-select" @bind-Value="title">
     <option value="Matches">Matches</option>
-    @foreach (var card in GetMatches())
+    @foreach (var title in GetMatches())
     {
-      <option value="@card.Title" @onclick="OnClick">@card.Title</option>
+      <option value="@title" @onclick="OnClick">@title</option>
     }
   </InputSelect>
 }
@@ -24,13 +24,15 @@
 
   private string title;
 
-  public IEnumerable<Card> GetMatches()
+  public IEnumerable<string> GetMatches()
   {
     if (SearchTerm?.Length > 0)
     {
-      return Cards.Where(it => it.Title.StartsWith(SearchTerm, true, System.Globalization.CultureInfo.InvariantCulture));
+      return (from c in Cards
+             where c.Title.StartsWith(SearchTerm, true, System.Globalization.CultureInfo.InvariantCulture)
+             select c.Title).Distinct();
     }
-    return new List<Card>();
+    return new List<string>();
   }
 
   private void OnClick()
