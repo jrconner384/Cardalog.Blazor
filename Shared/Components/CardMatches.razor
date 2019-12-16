@@ -30,7 +30,7 @@
     {
       return (from c in Cards
              where c.Title.StartsWith(SearchTerm, true, System.Globalization.CultureInfo.InvariantCulture)
-             select c.Title).Distinct();
+             select c.TitleExpansion).Distinct();
     }
     return new List<string>();
   }

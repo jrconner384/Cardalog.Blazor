@@ -27,6 +27,8 @@ namespace Cardalog.Models
       }
     }
 
+    public string TitleExpansion => $"{Title} || {Expansion.Name}";
+
     private string type;
     [Required]
     [StringLength(25, ErrorMessage = "{0} may not exceed {1} characters.")]

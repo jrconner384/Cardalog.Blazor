@@ -157,7 +157,7 @@
 
   private void CardSelected(string title)
   {
-    var match = cards.First(it => it.Title.Equals(title, StringComparison.InvariantCultureIgnoreCase));
+    var match = cards.First(it => it.TitleExpansion.Equals(title, StringComparison.InvariantCultureIgnoreCase));
     card = new Card
     {
       Title = match.Title,
@@ -171,7 +171,14 @@
       Power = match.Power,
       Toughness = match.Toughness,
       CardNumber = match.CardNumber,
-      Artist = match.Artist
+      Artist = match.Artist,
+      Expansion = new Expansion
+      {
+        Name = match.Expansion.Name,
+        TotalCards = match.Expansion.TotalCards,
+        Abbreviation = match.Expansion.Abbreviation,
+        Copyright = match.Expansion.Copyright
+      }
     };
   }
 }
